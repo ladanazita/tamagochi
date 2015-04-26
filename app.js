@@ -3,10 +3,14 @@
 // a sick property (initially false)
 // an age of 0
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    verifier();
+});
+
 var start =  Date.now();
 function Tamagotchi(name, type) {
 	this.hungry = 0;
-	this.digest= 0;
+	this.digest = 0;
 	this.clean = 0; 
 	this.tired = 0;
 	this.happy = 0;
@@ -16,7 +20,7 @@ function Tamagotchi(name, type) {
 	this.type = type;
 	this.lastMeal = 0;
 	this.lastCheckup = 0;
-    this.attw = 0;
+	this.lastPoop = 0;
 
 	this.getName = function(){
 		return this.name;
@@ -84,11 +88,11 @@ function Tamagotchi(name, type) {
 	this.setLastCheckup = function(lastCheckup) {
 		this.lastCheckup = lastCheckup;
 	}
-	this.getAtww = function(){
-		return this.atww;
+	this.getLastPoop = function(){
+		return this.lastPoop;
 	}
-	this.setHappy = function(atww) {
-		this.atww = atww;
+	this.setHappy = function(lastPoop) {
+		this.lastPoop = lastPoop;
 	}
 }
 
@@ -107,42 +111,57 @@ function verifier() {
 
 function verify() {
 	var bleedTime = bleed();
+	isHungry(bleedTime);
 	console.log('bleed: ', bleedTime);
 }
 
-function feed(){
-	if (this.hungry=false){
-		console.log('Im not hungry, keeper');
-		tamagochi.setHungry(10);
+function isHungry(bleedTime){
+	if (bleedTime>6){
+		console.log('Im hungry, keeper!!');
+		tamagochi.setHungry(tamagochi.getHungry()+10);
+		console.log(tamagochi.getHungry());
 	}
 	else {
-		console.log ('okay, this was pretty good');
+		console.log('Im not hungry, keeper');
 	}
 }
 
-// Give it the following methods:
-/*this.hungry= function () {
-		if (hungry===true)
-		{
-			console.log ("(╯ °□° ）╯ ︵  ┻━┻");
-			//insert images to express the feelings
-		}
-		else
-		{
-			console.log("(⑅ ˘͈ ᵕ ˘͈  )");
-		}
+function isTired(bleedTime){
+	if (bleedTime>6){
+		console.log('Im tired, keeper!!');
+		tamagochi.setTired(tamagochi.getTired()+10);
+		console.log(tamagochi.getTired());
 	}
-	this.sick= function () {
-		if (sick===true)
-		{
-			console.log ("( ╹✖╹ )");
-		}
-		else
-		{
-			console.log (("(＊◕ᴗ◕＊)"));
-		}
+	else {
+		console.log('Im not hungry, keeper');
 	}
-*/
+}
+
+function isBday(bleedTime){
+	if (bleedTime>1000){
+		console.log('ITS MY BDAY, say congrats to me, keeper!!');
+		tamagochi.setAge(tamagochi.getAge()+1);
+		console.log(tamagochi.getAge());
+	}
+	else {
+		console.log('Im not hungry, keeper');
+	}
+}
+function isDigesting(lastMeal){
+	if (lastMeal>1000){
+		console.log('poop');
+		tamagochi.setLastMeal(tamagochi.getDigest()+10);
+		checkPoop(tamagochi.getDigest());
+		console.log(tamagochi.getDigest());
+	}
+	else {
+		console.log('Im not hungry, keeper');
+	}
+}
+function checkPoop(){
+	
+}
+
 // feed() - if hungry is true, print "That was yummy!" and set hungry to false.
 //If hungry is false, print "No thanks, I'm full." and set hungry to true.
 
