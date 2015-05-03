@@ -1,8 +1,3 @@
-// Make a Tamagotchi constructor. Give it the following properties:
-// a hungry property (initially false)
-// a sick property (initially false)
-// an age of 0
-
 document.addEventListener("DOMContentLoaded", function(event) {
     verifier();
 });
@@ -93,7 +88,6 @@ Object.defineProperties(Tamagochi, {
 
 
 });
-Math.round(
 var gochi = Object.create(Tamagochi);
 gochi.init("tape", "cat");
 
