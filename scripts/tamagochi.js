@@ -1,3 +1,8 @@
+// Make a Tamagotchi constructor. Give it the following properties:
+// a hungry property (initially false)
+// a sick property (initially false)
+// an age of 0
+
 document.addEventListener("DOMContentLoaded", function(event) {
     verifier();
 });
@@ -88,7 +93,7 @@ Object.defineProperties(Tamagochi, {
 
 
 });
-
+Math.round(
 var gochi = Object.create(Tamagochi);
 gochi.init("tape", "cat");
 
@@ -100,7 +105,7 @@ function init(name, type) {
 function isHungry(){
 	if (bleedTime>6){
 		console.log('Im hungry, keeper!!');
-		this.hungry = this.hungry+10;
+		this.hungry = Math.round(this.hungry+10);
 		console.log(this.hungry);
 		if (this.hungry>100) {
 			//alert
@@ -114,7 +119,7 @@ function isHungry(){
 function isDigesting(bleedTime){
 	if ((bleedTime-this.lastMeal)>60){
 		console.log('poop');
-		this.digest = this.digest +10;
+		this.digest = Math.round(this.digest +10);
 		if (this.lastMeal>100) {
 			//alert
 		}
@@ -127,7 +132,7 @@ function isDigesting(bleedTime){
 function isClean(bleedTime) {
 	if ((bleedTime-this.lastShower)>60) {
 		console.log('Im a trash, keeper!!');
-		this.clean = this.clean+10;
+		this.clean = Math.round(this.clean+10);
 		console.log(this.clean);
 		if (this.clean>100) {
 			//alert
@@ -140,7 +145,7 @@ function isClean(bleedTime) {
 function isTired(bleedTime){
 	if (bleedTime>6){
 		console.log('Im tired, keeper!!');
-		this.tired = this.tired+10;
+		this.tired = Math.round(this.tired+10);
 		console.log(this.tired);
 	}
 	else {
@@ -151,7 +156,7 @@ function isTired(bleedTime){
 function isBday(bleedTime){
 		if (bleedTime>this.birthday){
 			console.log('ITS MY BDAY, say congrats to me, keeper!!');
-			this.age = this.age+1;
+			this.age = Math.round(this.age+1);
 			this.birthday = this.birthday+ 1000;
 			console.log(this.age);
 		}
